@@ -1,5 +1,5 @@
 import * as React from "react"
-import logo from "./Lucas_Santos_logo_2.png"
+import logo from "./Lucas_Santos_logo.png"
 // import lucastls_logo from "../../../../static/lucastls_logo.png"
 
 const Logo = () => (

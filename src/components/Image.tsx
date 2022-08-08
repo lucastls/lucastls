@@ -9,7 +9,7 @@ const Image = ({ photo, imageProps, wrapperProps }: ImageProps) => {
     const { src, alt, title, style, sizes, className, onClick } = imageProps
     const { style: wrapperStyle, ...restWrapperProps } = wrapperProps ?? {}
     return (
-            <StaticImage
+            <img
                 src={src}
                 alt={"1"}
                 title={photo.title}
