@@ -11,9 +11,9 @@ module.exports = {
     siteTitleAlt: `Lucastls`,
     siteHeadline: `Lucastls`,
     siteUrl: `https://lucastls.com`,
-    siteDescription: `Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects.`,
+    siteDescription: `Lucas Santos personal site.`,
     siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
+    // siteImage: `/banner.jpg`,
     author: `@lekoarts_de`,
   },
   plugins: [
@@ -25,7 +25,8 @@ module.exports = {
         homepageProjectLimit: 3,
         navigation: [
           { name: `Photography`, slug: `/photography` },
-          // { name: `Projects`, slug: `/projects` },
+          { name: `Photography 2`, slug: `/photo` },
+          // { name: `Photos`, slug: `/photos` },
           // { name: `Art`, slug: `/art` },
           // { name: `About`, slug: `/about` },
         ],
@@ -44,6 +45,13 @@ module.exports = {
             file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
           },
         ],
+        // custom: [
+        //   {
+        //     name: `Work Sans`,
+        //     path: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
+        //     // file: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
+        //   }
+        // ],
       },
     },
     {
@@ -94,8 +102,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `photography`,
+        path: `${__dirname}/src/photography`,
       },
     },
     {
@@ -104,7 +112,35 @@ module.exports = {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        enableDefaultTransformations: true
+        // enableDefaultTransformations: true,
+        uploadFolder: "photography",
+        overwriteExisting: false,
+        transformTypes: [
+          `CloudinaryAsset`,
+          `CloudinaryMedia`,
+        ],
+      },
+    },
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 100,
+          // breakpoints: [2400, 1080, 640, 384, 256, 128, 96, 64, 48],
+          breakpoints: [2400, 1080, 640, 380, 250, 120, 90, 60, 45],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+    `gatsby-transformer-sharp`, // Needed for dynamic images
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content/photos`,
+        path: `content/photos`,
       },
     },
     shouldAnalyseBundle && {

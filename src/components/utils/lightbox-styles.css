@@ -1,0 +1,29 @@
+.yarl__slide {
+    padding-top: 3rem;
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+}
+
+.yarl__toolbar {
+    padding: 0px 0px;
+}
+
+
+.yarl__button {
+    /* padding: 0px 0px; */
+}
+
+.yarl__thumbnails_container {
+    height: 12vh !important;
+    /* padding: 2vh 0 !important; */
+}
+
+.yarl__thumbnails_thumbnail {
+    border-radius: var(--yarl__thumbnails_thumbnail_border_radius, 0px) !important;
+    border: var(--yarl__thumbnails_thumbnail_border, 1.5px solid var(--yarl__color_button, rgba(255, 255, 255, 0.8))) !important;
+    max-height: 10vh !important;
+}
+
+.yarl__slide_title {
+    font-size: calc(2vw + .75vmin) !important;
+}
