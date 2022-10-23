@@ -24,8 +24,8 @@ module.exports = {
         homepagePageLimit: 2,
         homepageProjectLimit: 3,
         navigation: [
+          // { name: `Photography Normal`, slug: `/photo` },
           { name: `Photography`, slug: `/photography` },
-          { name: `Photography 2`, slug: `/photo` },
           // { name: `Photos`, slug: `/photos` },
           // { name: `Art`, slug: `/art` },
           // { name: `About`, slug: `/about` },
