@@ -11,9 +11,9 @@ module.exports = {
     siteTitleAlt: `Lucastls`,
     siteHeadline: `Lucastls`,
     siteUrl: `https://lucastls.com`,
-    siteDescription: `Image-heavy photography portfolio with colorful accents & customizable pages. Includes adaptive image grids powered by CSS grid and automatic image integration into projects.`,
+    siteDescription: `Lucas Santos personal site.`,
     siteLanguage: `en`,
-    siteImage: `/banner.jpg`,
+    // siteImage: `/banner.jpg`,
     author: `@lekoarts_de`,
   },
   plugins: [
@@ -24,8 +24,9 @@ module.exports = {
         homepagePageLimit: 2,
         homepageProjectLimit: 3,
         navigation: [
+          // { name: `Photography Normal`, slug: `/photo` },
           { name: `Photography`, slug: `/photography` },
-          // { name: `Projects`, slug: `/projects` },
+          // { name: `Photos`, slug: `/photos` },
           // { name: `Art`, slug: `/art` },
           // { name: `About`, slug: `/about` },
         ],
@@ -34,15 +35,23 @@ module.exports = {
     {
       resolve: `gatsby-omni-font-loader`,
       options: {
+        mode: "async",
         enableListener: true,
         preconnect: [`https://fonts.gstatic.com`],
         // If you plan on changing the font you'll also need to adjust the Theme UI config to edit the CSS
         // See: https://github.com/LekoArts/gatsby-themes/tree/main/examples/jodie#changing-your-fonts
-        web: [
+        // web: [
+        //   {
+        //     name: `Work Sans`,
+        //     file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
+        //   },
+        // ],
+        custom: [
           {
             name: `Work Sans`,
-            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
-          },
+            // path: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
+            file: `/fonts/WorkSans-VariableFont_wght.ttf/`
+          }
         ],
       },
     },
@@ -94,8 +103,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `photography`,
+        path: `${__dirname}/src/photography`,
       },
     },
     {
@@ -104,7 +113,34 @@ module.exports = {
         cloudName: process.env.CLOUDINARY_CLOUD_NAME,
         apiKey: process.env.CLOUDINARY_API_KEY,
         apiSecret: process.env.CLOUDINARY_API_SECRET,
-        enableDefaultTransformations: true
+        // enableDefaultTransformations: true,
+        uploadFolder: "photography",
+        overwriteExisting: false,
+        transformTypes: [
+          `CloudinaryAsset`,
+          `CloudinaryMedia`,
+        ],
+      },
+    },
+    `gatsby-plugin-image`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 100,
+          breakpoints: [1920, 1840, 1809, 1742, 1671, 1625, 1471, 1446, 1356, 1286, 1236, 1154, 1052, 944, 837, 729, 564, 334, 200, 100, 50],
+          backgroundColor: `transparent`,
+        },
+      },
+    },
+    `gatsby-transformer-sharp`, // Needed for dynamic images
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `content/photos`,
+        path: `content/photos`,
       },
     },
     shouldAnalyseBundle && {
