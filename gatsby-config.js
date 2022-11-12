@@ -35,23 +35,24 @@ module.exports = {
     {
       resolve: `gatsby-omni-font-loader`,
       options: {
+        mode: "async",
         enableListener: true,
         preconnect: [`https://fonts.gstatic.com`],
         // If you plan on changing the font you'll also need to adjust the Theme UI config to edit the CSS
         // See: https://github.com/LekoArts/gatsby-themes/tree/main/examples/jodie#changing-your-fonts
-        web: [
-          {
-            name: `Work Sans`,
-            file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
-          },
-        ],
-        // custom: [
+        // web: [
         //   {
         //     name: `Work Sans`,
-        //     path: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
-        //     // file: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
-        //   }
+        //     file: `https://fonts.googleapis.com/css2?family=Work+Sans:wght@400..700&display=swap`,
+        //   },
         // ],
+        custom: [
+          {
+            name: `Work Sans`,
+            // path: `${__dirname}/static/WorkSans-VariableFont_wght.ttf/`
+            file: `/fonts/WorkSans-VariableFont_wght.ttf/`
+          }
+        ],
       },
     },
     {
@@ -129,8 +130,7 @@ module.exports = {
           formats: [`auto`, `webp`],
           placeholder: `blurred`,
           quality: 100,
-          // breakpoints: [2400, 1080, 640, 384, 256, 128, 96, 64, 48],
-          breakpoints: [2400, 1080, 640, 380, 250, 120, 90, 60, 45],
+          breakpoints: [1920, 1840, 1809, 1742, 1671, 1625, 1471, 1446, 1356, 1286, 1236, 1154, 1052, 944, 837, 729, 564, 334, 200, 100, 50],
           backgroundColor: `transparent`,
         },
       },

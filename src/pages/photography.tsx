@@ -22,12 +22,11 @@ import image_secure_url from "../components/utils/images_secure_urls"
 
 const Photography = ({ data }) => {
 
-  const breakpoints = [2400, 1080, 640, 380, 250, 120, 90, 60, 40];
+  const breakpoints = [1920, 1840, 1809, 1742, 1671, 1625, 1471, 1446, 1356, 1286, 1236, 1154, 1052, 944, 837, 729, 564, 334, 200, 100, 50];
 
   const galleryPhotos = data.allCloudinaryMedia.edges.map(({ node }, index) => ({
     src: node.secure_url,
     width: node.width,
-    // gatsbyImage: image_secure_url(node.gatsbyImageData),
     thumbImage: node.thumbImage,
     fullImage: node.fullImage,
     height: node.height,
@@ -38,7 +37,6 @@ const Photography = ({ data }) => {
       const img_transform = "q_auto,f_auto,h_".concat(height.toString());
       return {
           src: node.secure_url.replace("q_auto,f_auto", img_transform),
-          // gatsbyImage: image_secure_url(node.gatsbyImageData),
           thumbImage: node.thumbImage,
           fullImage: node.fullImage,
           width: breakpoint,
@@ -71,28 +69,28 @@ const Photography = ({ data }) => {
   return (
     <Layout>
       <div style={{margin: "0 5vw"}}>
-      <PhotoAlbum 
-                photos={galleryPhotos}
-                renderPhoto={Image}
-                layout="masonry"
-                onClick={(event, photo, index) => setIndex(index)}
-                // targetRowHeight={500}
-                spacing={0}
-                // padding={10}
-      />
-      <Lightbox
-                slides={slides}
-                open={index >= 0}
-                index={index}
-                // render={{ slide: renderSlide }}
-                // carousel={{padding: "2.5rem", preload: 5}}
-                styles={{padding: "10px", root: { "--yarl__color_backdrop": "rgba(255, 255, 255, 0.95)", "--yarl__thumbnails_thumbnail_background": "rgba(147, 151, 153, 0.8)", "--yarl__thumbnails_container_background_color": "rgba(147, 151, 153, 0.8)", "--yarl__color_button": "rgba(105,105,105, 0.8)", "--yarl__slide_title_color": "rgb(0, 0, 0)"}, captionsTitleContainer: {backgroundColor: "transparent", paddingTop: "0rem"}}}
-                close={() => setIndex(-1)}
-                // enable optional lightbox plugins
-                // plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-                plugins={[Fullscreen, Thumbnails, Captions]}
-      />
-      
+        <PhotoAlbum 
+                  photos={galleryPhotos}
+                  renderPhoto={Image}
+                  layout="masonry"
+                  onClick={(event, photo, index) => setIndex(index)}
+                  targetRowHeight={240}
+                  spacing={0}
+                  // padding={10}
+        />
+        <Lightbox
+                  slides={slides}
+                  open={index >= 0}
+                  index={index}
+                  // render={{ slide: renderSlide }}
+                  // carousel={{padding: "2.5rem", preload: 5}}
+                  // styles={{padding: "10px", root: { "--yarl__color_backdrop": "rgba(255, 255, 255, 0.95)", "--yarl__thumbnails_thumbnail_background": "rgba(147, 151, 153, 0.8)", "--yarl__thumbnails_container_background_color": "rgba(147, 151, 153, 0.8)", "--yarl__color_button": "rgba(105,105,105, 0.8)", "--yarl__slide_title_color": "rgb(0, 0, 0)"}, captionsTitleContainer: {backgroundColor: "transparent", paddingTop: "0rem"}}}
+                  styles={{root: { "--yarl__color_backdrop": "rgba(255, 255, 255, 0.95)", "--yarl__thumbnails_thumbnail_background": "rgba(147, 151, 153, 0.8)", "--yarl__thumbnails_container_background_color": "rgba(147, 151, 153, 0.8)", "--yarl__color_button": "rgba(105,105,105, 0.8)", "--yarl__slide_title_color": "rgb(0, 0, 0)"}, captionsTitleContainer: {backgroundColor: "transparent", paddingTop: "0rem"}}}
+                  close={() => setIndex(-1)}
+                  // enable optional lightbox plugins
+                  // plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
+                  plugins={[Fullscreen, Thumbnails, Captions]}
+        />
       </div>
     </Layout>
   )
@@ -119,7 +117,7 @@ export const pageQuery = graphql`
           thumbImage: gatsbyImageData(
             layout: CONSTRAINED
             placeholder: BLURRED
-            height: 300
+            height: 240
           )
           fullImage: gatsbyImageData(
             layout: CONSTRAINED
