@@ -100,7 +100,7 @@ export const pageQuery = graphql`
   query CloudinaryGatsbyImages {
     allCloudinaryMedia(
       sort: {order: DESC, fields: [public_id]}
-      filter: {folder: {eq: "photo", ne: "photography"}, format: {eq: "webp"}}
+      filter: {folder: {eq: "photo", ne: "photography"}, format: {in: ["webp", "jpg"]}}
     ) {
       edges {
         node {
