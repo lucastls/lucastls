@@ -139,9 +139,17 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `content/photos`,
-        path: `content/photos`,
+        name: `photos`,
+        path: `${__dirname}/src/photography`,
       },
+    },
+    {
+      resolve: '@mkitio/gatsby-theme-password-protect',
+      options: {
+        password: process.env.NATAL_PASSWORD,
+        partialMatching: false,
+        pagePaths: ['/natal-2022', '/natal-2022/']
+      }
     },
     shouldAnalyseBundle && {
       resolve: `gatsby-plugin-webpack-bundle-analyser-v2`,
