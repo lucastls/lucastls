@@ -62,7 +62,11 @@ typings/
 
 .cache
 **/.cache
-public
+.next/
+out/
+playwright-report/
+test-results/
+*.tsbuildinfo
 
 .idea
 .vscode
