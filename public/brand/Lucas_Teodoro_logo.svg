@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Lucas Teodoro</title>
+  <g fill="none" stroke="#202020" stroke-width="14">
+    <path d="M464 108V72H8V402H44" />
+    <path d="M60 122H504V444H60Z" />
+  </g>
+  <text x="282" y="307" fill="#202020" font-family="Arial Narrow, sans-serif" font-size="43" font-weight="700" letter-spacing="1" text-anchor="middle">LUCAS TEODORO</text>
+</svg>
